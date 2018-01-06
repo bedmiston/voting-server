@@ -16,22 +16,25 @@ describe('immutability', () => {
     });
   });
 
-  describe('A list', () => {
+  describe('A List', () => {
+    
     function addMovie(currentState, movie) {
       return currentState.push(movie);
     }
 
     it('is immutable', () => {
       let state = List.of('Trainspotting', '28 Days Later');
-      let nextState = addMovie('Sunshine');
+      let nextState = addMovie(state, 'Sunshine');
 
-      expext(nextState).to.equal(List.of(
+      expect(nextState).to.equal(List.of(
         'Trainspotting',
         '28 Days Later',
         'Sunshine'
       ));
-      expect(State).to.equal(List.of())
+      expect(state).to.equal(List.of(
+        'Trainspotting',
+        '28 Days Later'
+      ));
     });
   });
-
 });
